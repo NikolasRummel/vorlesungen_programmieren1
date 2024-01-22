@@ -7,13 +7,14 @@ public class QuadraticFormula {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-
             System.out.println("Enter a: ");
             double a = scanner.nextDouble();
             System.out.println("Enter b: ");
             double b = scanner.nextDouble();
             System.out.println("Enter c: ");
             double c = scanner.nextDouble();
+
+            System.out.println("Your equation: " + a + "x^2 + " + b + "x + " + c + " = 0");
 
             if (a == 0) {
                 if (b == 0) {
@@ -23,15 +24,15 @@ public class QuadraticFormula {
                 }
             } else {
                 double d = Math.pow(b, 2) - 4 * a * c;
-                if (d < 0) {
-                    System.out.println("Die Lösung ist konjugiert komplex");
-                } else if (d == 0) {
-                    System.out.println("x: " + -b / (2 * a));
-                } else {
+
+                if (d >= 0) {
                     double x1 = (-b + Math.sqrt(d)) / (2 * a);
                     double x2 = (-b - Math.sqrt(d)) / (2 * a);
                     System.out.println("x1: " + x1);
                     System.out.println("x2: " + x2);
+
+                } else {
+                    System.out.println("Die Lösung ist konjugiert komplex");
                 }
             }
         }
