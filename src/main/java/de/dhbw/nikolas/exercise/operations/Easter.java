@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Easter {
 
     public static void main(String[] args) {
+        Easter easter = new Easter();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -14,11 +15,11 @@ public class Easter {
                 System.out.println("Das Jahr muss größer als 0 sein!");
                 continue;
             }
-            calculateEaster(year);
+            easter.calculateEaster(year);
         }
     }
 
-    static void calculateEaster(int year) {
+    public void calculateEaster(int year) {
         int a = year % 19;
         int b = year % 4;
         int c = year % 7;
