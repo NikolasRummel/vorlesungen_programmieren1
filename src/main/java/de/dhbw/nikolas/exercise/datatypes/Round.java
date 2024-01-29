@@ -1,13 +1,18 @@
 package de.dhbw.nikolas.exercise.datatypes;
 
+import java.util.Scanner;
+
 public class Round {
 
     public static void main(String[] args) {
-        double d = -4.7D;
-        double d2 = d < 0 ? d - 0.5 : 0.5;
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            double input = scanner.nextDouble();
+            double tmp = input + (input > 0 ? 0.5 : -0.5);
+            int rounded = (int) tmp;
 
-        int r = (int) d2;
-        System.out.println(r);
+            System.out.println(rounded);
+        }
     }
-
 }
