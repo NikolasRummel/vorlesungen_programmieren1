@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Round {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
         
         while (true) {
             double input = scanner.nextDouble();
