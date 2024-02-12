@@ -18,7 +18,10 @@ public class SiebDesEratostenes {
      * Schreiben Sie ein Programm, das diesen Algorithmus implementiert, z.B. für n = 100.
      * Tipp:
      * Sie können ein
+     *
      */
+
+
 
     public static void main(String[] args) {
         int n = 100;
@@ -34,7 +37,6 @@ public class SiebDesEratostenes {
         for (int i = 0; i < sieve.length; i++) {
             sieve[i] = i + 2;
         }
-
 
         while (!finished) {
             int min = Integer.MAX_VALUE;
@@ -67,6 +69,10 @@ public class SiebDesEratostenes {
                     empty = false;
                 }
             }
+
+
+
+
 
             //fertig
             if (empty) {
