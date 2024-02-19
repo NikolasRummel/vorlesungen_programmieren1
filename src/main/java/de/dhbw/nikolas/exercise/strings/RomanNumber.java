@@ -10,7 +10,6 @@ public class RomanNumber {
         System.out.println("Enter a roman number: ");
         String roman = scanner.nextLine();
 
-
         int sum = 0;
         for (int i = 0; i < roman.length(); i++) {
             if (roman.charAt(i) == 'I') {

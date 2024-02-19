@@ -14,7 +14,6 @@ public class Palindrome {
             }
         }
 
-
         String reverse = "";
         for (int i = 0; i < input.length(); i++) {
             reverse = input.charAt(i) + reverse;
