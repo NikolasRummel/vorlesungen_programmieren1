@@ -28,14 +28,12 @@ public class CrossTotalFile {
             e.printStackTrace();
         }
 
-        String line = "Quersumme von " + number + " ist " + sum;
+        String line = "Quersumme von " + number + " ist " + sum + "\n";
 
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file, true);
+        try (FileOutputStream outputStream = new FileOutputStream(file, true)) {
             byte[] strToBytes = line.getBytes();
             outputStream.write(strToBytes);
 
-            outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
