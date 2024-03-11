@@ -16,4 +16,15 @@ public class Ambulance extends Vehicle {
     public void turnOffSiren() {
         isSirenOn = false;
     }
+
+    @Override
+    public void info() {
+        System.out.println("Ambulance{" +
+                "wheels=" + wheels +
+                ", vmax=" + vmax +
+                ", position=" + position +
+                ", speed=" + speed +
+                ", isSirenOn=" + isSirenOn +
+                '}');
+    }
 }

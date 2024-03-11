@@ -1,6 +1,6 @@
 package de.dhbw.nikolas.exercise.classes.vehicles;
 
-public class Vehicle {
+public abstract class Vehicle {
 
     protected int wheels = 0;
     protected double vmax = 0;
@@ -14,10 +14,11 @@ public class Vehicle {
         this.speed = speed;
     }
 
-
     public Vehicle(double speed) {
         this.speed = speed;
     }
+
+    public abstract void info();
 
     protected double setSpeed(double speed) {
         if (speed > vmax) {
@@ -30,11 +31,6 @@ public class Vehicle {
 
     protected void drive(double minutes) {
         position += speed * (minutes / 60);
-    }
-
-
-    public void hallo() {
-        System.out.println("Hallo");
     }
 
     public String toString() {
