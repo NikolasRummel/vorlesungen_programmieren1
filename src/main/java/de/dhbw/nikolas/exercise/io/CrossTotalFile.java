@@ -37,6 +37,5 @@ public class CrossTotalFile {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
