@@ -42,6 +42,7 @@ public class PalindromeFile {
 
             String line = input + "\n";
             Files.write(path, line.getBytes(), java.nio.file.StandardOpenOption.APPEND);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
