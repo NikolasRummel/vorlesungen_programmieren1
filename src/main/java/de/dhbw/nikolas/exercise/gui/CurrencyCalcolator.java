@@ -61,7 +61,8 @@ public class CurrencyCalcolator extends JFrame {
         this.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         new CurrencyCalcolator();
+        Thread.sleep(10);
     }
 }
