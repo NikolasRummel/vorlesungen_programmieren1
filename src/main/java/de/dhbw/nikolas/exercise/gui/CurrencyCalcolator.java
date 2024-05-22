@@ -1,7 +1,16 @@
 package de.dhbw.nikolas.exercise.gui;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * @author Nikolas Rummel
@@ -12,6 +21,7 @@ public class CurrencyCalcolator extends JFrame {
     private static final double CONVERSION_FACTOR = 1.09D;
 
     private JPanel panel;
+    private OkHttpClient client = new OkHttpClient();
 
     public CurrencyCalcolator() {
         this.setSize(450, 100);
@@ -34,7 +44,7 @@ public class CurrencyCalcolator extends JFrame {
         convert1.addActionListener(e -> {
             try {
                 double value = Double.parseDouble(textField.getText());
-                textField.setText(String.valueOf(value * CONVERSION_FACTOR));
+                textField.setText(String.valueOf(value * getConversionFactor()));
             } catch (NumberFormatException ex) {
                 textField.setText("Please enter a valid number");
             }
@@ -43,7 +53,7 @@ public class CurrencyCalcolator extends JFrame {
         convert2.addActionListener(e -> {
             try {
                 double value = Double.parseDouble(textField.getText());
-                textField.setText(String.valueOf(value / CONVERSION_FACTOR));
+                textField.setText(String.valueOf(value / getConversionFactor()));
             } catch (NumberFormatException ex) {
                 textField.setText("Please enter a valid number");
             }
@@ -60,6 +70,26 @@ public class CurrencyCalcolator extends JFrame {
         this.add(panel);
         this.setVisible(true);
     }
+
+    private double getConversionFactor() {
+        Request request = new Request.Builder()
+                .url("https://api.frankfurter.app/latest?from=USD&to=EUR")
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            String responseBody = response.body().string();
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonNode = mapper.readTree(responseBody);
+
+            return jsonNode.get("rates").get("EUR").asDouble();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0.0;
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
         new CurrencyCalcolator();
