@@ -1,9 +1,7 @@
 package de.dhbw.nikolas.exercise.gui;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,14 +14,14 @@ import java.io.IOException;
  * @author Nikolas Rummel
  * @since 22.05.24, 08:05
  */
-public class CurrencyCalcolator extends JFrame {
+public class CurrencyCalculator extends JFrame {
 
     private static final double CONVERSION_FACTOR = 1.09D;
 
     private JPanel panel;
     private OkHttpClient client = new OkHttpClient();
 
-    public CurrencyCalcolator() {
+    public CurrencyCalculator() {
         this.setSize(450, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -92,7 +90,7 @@ public class CurrencyCalcolator extends JFrame {
 
 
     public static void main(String[] args) throws InterruptedException {
-        new CurrencyCalcolator();
+        new CurrencyCalculator();
         Thread.sleep(10);
     }
 }
