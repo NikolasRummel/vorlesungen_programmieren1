@@ -1,5 +1,7 @@
 package de.dhbw.nikolas.exercise.gui.numberguesser;
 
+import de.dhbw.nikolas.exercise.gui.TextFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -32,10 +34,12 @@ public class NumberGuessingGui extends JFrame {
         JButton okButton = new JButton("Ok");
         JButton bestPlayerButton = new JButton("Best Player");
         JButton exitButton = new JButton("Exit");
+        JButton scoreButton = new JButton("Score");
 
         buttonPanel.add(gameButton);
         buttonPanel.add(okButton);
         buttonPanel.add(bestPlayerButton);
+        buttonPanel.add(scoreButton);
         buttonPanel.add(exitButton);
 
         panel.add(buttonPanel);
@@ -82,6 +86,10 @@ public class NumberGuessingGui extends JFrame {
         });
 
         exitButton.addActionListener(e -> System.exit(0));
+
+        scoreButton.addActionListener(e -> {
+            new TextFrame(game.getPath().getFileName().toString(), 600, 300);
+        });
 
         this.add(panel);
         this.pack();

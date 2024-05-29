@@ -98,4 +98,8 @@ public class NumberGuessingGame {
     public void setAttempts(int attempts) {
         this.attempts = attempts;
     }
+
+    public Path getPath() {
+        return path;
+    }
 }
