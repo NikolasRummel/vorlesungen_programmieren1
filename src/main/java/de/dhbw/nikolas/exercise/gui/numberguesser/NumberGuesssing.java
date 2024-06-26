@@ -4,6 +4,6 @@ public class NumberGuesssing {
 
     public static void main(String[] args) {
         NumberGuessingGame game = new NumberGuessingGame();
-        NumberGuessingGui gui = new NumberGuessingGui(game);
+        new NumberGuessingGui(game);
     }
 }
