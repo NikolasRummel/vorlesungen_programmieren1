@@ -65,7 +65,7 @@ public class DancingText extends JComponent {
     public static void main(String[] args) {
         // Create frame and add DancingText component
         JFrame f = new JFrame("Dancing Text");
-        f.add(new DancingText("-#-#-#-#-#-#-#-#-#-#", 200));
+        f.add(new DancingText("Justus stinkt :)", 200));
 
         new Thread(() -> {
             while (true) {
