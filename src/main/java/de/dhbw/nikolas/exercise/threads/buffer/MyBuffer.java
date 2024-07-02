@@ -1,31 +1,31 @@
 package de.dhbw.nikolas.exercise.threads.buffer;
 
-import java.util.LinkedList;
 import java.util.Random;
 import java.util.Stack;
 
 class MyBuffer {
     private static final int BUFFER_MAX_SIZE = 3;
-    private Stack<Integer> values;
+
+    private final Stack<Integer> values;
 
     public MyBuffer() {
         this.values = new Stack<>();
     }
 
     public synchronized void put(int v) {
-        if (isFull()) {
+        if (this.isFull()) {
             try {
                 System.out.println("Stack full! Waiting...");
                 this.wait();
             } catch (InterruptedException e) {
             }
         }
-        if (!isFull()) {
+        if (!this.isFull()) {
             this.values.push(v);
         }
         this.notify();
-        System.out.println("Put: " + v);
-        this.simulateDelayAndPrint();
+        System.out.println("PUT:" + v + this.getFillLevel());
+        this.simulateDelay(500);
     }
 
     public synchronized int get() {
@@ -38,31 +38,30 @@ class MyBuffer {
         }
         v = this.values.pop();
         this.notify();
-        System.out.println("Get:" + v);
-        this.simulateDelayAndPrint();
+        System.out.println("GET:" + v + this.getFillLevel());
+        this.simulateDelay(200);
         return v;
     }
 
-    public void simulateDelayAndPrint() {
+    private void simulateDelay(int max) {
         Random random = new Random();
-        int delay = 50 + random.nextInt(451);
+        int delay = 50 + random.nextInt(max);
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {
-
+            e.printStackTrace();
         }
-        printStack();
     }
 
-    public void printStack() {
-        System.out.println(this.values.size() + "/" + BUFFER_MAX_SIZE);
+    private String getFillLevel() {
+       return " " + this.values.size() + "/" + BUFFER_MAX_SIZE;
     }
 
-    public boolean isFull() {
+    private boolean isFull() {
         return this.values.size() >= BUFFER_MAX_SIZE;
     }
 
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         return this.values.isEmpty();
     }
 }

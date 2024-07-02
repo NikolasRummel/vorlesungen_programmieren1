@@ -12,7 +12,6 @@ public class ProducerThread extends Thread {
         this.buf.put(6);
         this.buf.put(2);
         this.buf.put(3);
-        this.buf.put(2);
         this.buf.put(4);
         this.buf.put(1);
     }
