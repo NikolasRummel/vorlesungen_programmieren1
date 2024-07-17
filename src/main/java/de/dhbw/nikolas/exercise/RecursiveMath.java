@@ -1,23 +1,20 @@
 package de.dhbw.nikolas.exercise;
 
-import de.dhbw.nikolas.exercise.classes.Point;
-import de.dhbw.nikolas.exercise.classes.Radio;
-
-public class Main {
+public class RecursiveMath {
 
     public static void main(String[] args) {
-        System.out.println(new Main().div(10, 5));
-        System.out.println(new Main().isLess(10, 5));
-        System.out.println(new Main().isLess(5, 10));
-        System.out.println(new Main().isLess(5, 5));
-        System.out.println(new Main().isLess(0, 5));
-        System.out.println(new Main().isLess(5, 0));
+        System.out.println(new RecursiveMath().div(10, 5));
+        System.out.println(new RecursiveMath().isLess(10, 5));
+        System.out.println(new RecursiveMath().isLess(5, 10));
+        System.out.println(new RecursiveMath().isLess(5, 5));
+        System.out.println(new RecursiveMath().isLess(0, 5));
+        System.out.println(new RecursiveMath().isLess(5, 0));
         System.out.println("----");
-        System.out.println(new Main().isBigger(10, 5));
-        System.out.println(new Main().isBigger(5, 10));
-        System.out.println(new Main().isBigger(5, 5));
-        System.out.println(new Main().isBigger(0, 5));
-        System.out.println(new Main().isBigger(5, 0));
+        System.out.println(new RecursiveMath().isBigger(10, 5));
+        System.out.println(new RecursiveMath().isBigger(5, 10));
+        System.out.println(new RecursiveMath().isBigger(5, 5));
+        System.out.println(new RecursiveMath().isBigger(0, 5));
+        System.out.println(new RecursiveMath().isBigger(5, 0));
     }
 
     public int div(int x, int y) {
