@@ -16,6 +16,7 @@ public class QuestionNumberLabel extends JLabel {
     public Status getStatus() {
         return status;
     }
+
     public void setStatus(Status status) {
         this.status = status;
         this.setBackground(status.getColor());

@@ -1,5 +1,9 @@
 package de.dhbw.nikolas.exercise.speedy;
 
+import de.dhbw.nikolas.exercise.Utils;
+
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,16 +50,16 @@ public class SpeedyQuiz {
 	public static List<Question> loadQuestions(){
 		List<Question> questions = new ArrayList<>();
 
-		// replace this code
-		// Generates 15 dummy questions, the first answer is always correct
-		for (int i = 1; i <= 15; i++) {
-			String line = String.format("Generated question %s;Answer 1;Answer 2;Answer 3;Answer 4;0", i);
-			Question q = parseQuestion(line);
-			if ( q != null ){
-				questions.add(q);
-			}
+		try {
+			Utils.readLinesFromFile(Paths.get("myDir/questions.txt")).forEach(s -> {
+				Question q = parseQuestion(s);
+				if ( q != null ){
+					questions.add(q);
+				}
+			});
+		}catch (IOException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error loading questions", JOptionPane.ERROR_MESSAGE);
 		}
-		// end replace this code
 
 		return questions;
 	}

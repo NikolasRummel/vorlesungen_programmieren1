@@ -11,7 +11,7 @@ public class GameTerm extends JFrame implements GameClient {
     private Game game;
     private String playerName;
 
-    private int points;
+    private int points = 0;
 
     private JLabel questionTextLabel;
     private JLabel timeLabel;
@@ -103,10 +103,17 @@ public class GameTerm extends JFrame implements GameClient {
         for (int i = 0; i < this.buttons.length; i++) {
             buttons[i].setEnabled(false);
         }
+
+        JOptionPane.showMessageDialog(this, game.getEndMessage());
     }
 
     @Override
     public void setAnswerState(int questionIndex, Status status) {
         labels.get(questionIndex).setStatus(status);
+    }
+
+    @Override
+    public void addPoint() {
+        this.points++;
     }
 }

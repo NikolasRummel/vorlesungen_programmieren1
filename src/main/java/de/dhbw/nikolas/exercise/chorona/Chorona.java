@@ -1,6 +1,7 @@
 package de.dhbw.nikolas.exercise.chorona;
 
-import de.dhbw.klausur.Utils;
+
+import de.dhbw.nikolas.exercise.Utils;
 
 import java.awt.Color;
 import java.util.Collections;

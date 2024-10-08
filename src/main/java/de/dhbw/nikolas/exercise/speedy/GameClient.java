@@ -6,7 +6,9 @@ public interface GameClient {
 
     public int getPoints();
 
-    public void setQuestion(int questionIndex, Question q); //TODO: STATE ACTIVE
+    public void addPoint();
+
+    public void setQuestion(int questionIndex, Question q);
 
     public void setRemainingSeconds(int seconds);
 
