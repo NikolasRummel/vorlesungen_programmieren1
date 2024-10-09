@@ -15,7 +15,7 @@ public class SiebDesEratostenes {
      * (4) bestimme die kleinste Zahl min in sieve
      * (5) füge min zu primes hinzu
      * (6) entferne min und alle seine ganzzahligen Vielfachen aus sieve
-     * Schreiben Sie ein Programm, das diesen Algorithmus implementiert, z.B. für n = 100.
+     * Schreiben Sie ein Programm, das diesen Algorithmus implementiert, z.logic.B. für n = 100.
      * Tipp:
      * Sie können ein
      *

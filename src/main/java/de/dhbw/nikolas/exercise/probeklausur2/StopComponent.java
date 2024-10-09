@@ -52,7 +52,7 @@ public class StopComponent extends JPanel {
 			"Zugentgleisung",
 			"Anschlussaufnahme - Zubringer versp\u00e4tet",
 			"Besch\u00e4digungen/ Eingriffe durch Fremde oder Tiere",
-			"B\u00f6schungsbrand",
+			"logic.B\u00f6schungsbrand",
 			"Bombendrohung",
 			"Bahnsteigverfehlungen/ erforderliches Zur\u00fccksetzen"
 	};
