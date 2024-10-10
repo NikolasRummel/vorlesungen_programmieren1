@@ -4,6 +4,9 @@ package de.dhbw.nikolas.exercise.chorona;
 import de.dhbw.nikolas.exercise.Utils;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -42,10 +45,13 @@ public class Chorona {
     public static Map<Variant, Double> getPollutantFactors() {
         Map<Variant, Double> map = new HashMap<>();
 
-        // Diese beiden TEST (!) Zeilen auskommentieren und das Einlesen der Datei
-        // "pollutantfactors.txt" ergaenzen
-        Chorona.parsePolluteFactor("DELTA,50", map);
-        Chorona.parsePolluteFactor("OMICRON,200", map);
+        try {
+            for (String s : Utils.readLinesFromFile(Paths.get("myDir/pollutantfactors.txt"))) {
+                Chorona.parsePolluteFactor(s, map);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // Wenn nach dem Einlesen der Datei mehr als zwei Eintraege in der Map
         // sind werden zwecks Uebersicht zufaellig so lange Eintraege entfernt,

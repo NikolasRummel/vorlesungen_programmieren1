@@ -1,8 +1,11 @@
 package de.dhbw.nikolas.exercise.chorona;
 
+import de.dhbw.nikolas.exercise.Utils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Point;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -91,6 +94,27 @@ public class ChoronaTerminal extends JFrame {
             }).start();
             playButton.setEnabled(true);
             stepButton.setEnabled(true);
+        });
+
+        saveButton.addActionListener(e -> {
+            String fileName = variant.name() + "-"
+                    + room.getSteps() + ".txt";
+
+            StringBuilder fileText = new StringBuilder();
+            int i = 0;
+            for (CellButton cellButton : cellButtons) {
+                Point point = Utils.getGridPosition(i, room.getSetting().getWidth());
+                fileText.append(point.x).append(";").append(point.y).append(";").append(room.getDose(point.x, point.y)).append("\n");
+                i++;
+            }
+            boolean saved = Utils.saveInFile(Paths.get("myDir/" + fileName), fileText.toString(), false);
+
+            if (saved) {
+                JOptionPane.showMessageDialog(this, fileName + " saved!", "Meldung", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, fileName + " not saved!", "Error!", JOptionPane.ERROR_MESSAGE);
+
+            }
         });
 
         panel.add(stepLabel, BorderLayout.NORTH);
