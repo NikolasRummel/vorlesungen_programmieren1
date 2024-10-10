@@ -5,7 +5,9 @@ import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -105,5 +107,65 @@ public class Utils {
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         panel.add(new JButton("Submit"), gbc);
+    }
+
+    public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("MyTitle");
+        frame.setSize(600, 350);
+
+        frame.setLayout(new BorderLayout());
+        JPanel panel = new JPanel();
+
+        panel.setLayout(new FlowLayout());
+
+        JButton button = new JButton("Click");
+        JButton clear = new JButton("Clear");
+        JLabel label = new JLabel("Please enter an index:");
+        JTextField field = new JTextField("", 20);
+        panel.add(label);
+        panel.add(field);
+        panel.add(button);
+        panel.add(clear);
+
+        JPanel matrix = new JPanel(new GridLayout(5, 5));
+        List<JButton> buttons = new ArrayList<>();
+        for (int i = 0; i < 5 * 5; i++) {
+            JButton matrixButton = new JButton("" + i);
+            matrixButton.addActionListener(e -> matrixButton.setBackground(Color.RED));
+            buttons.add(matrixButton);
+            matrix.add(matrixButton);
+        }
+
+        Runnable runnable = () -> {
+            int index = Integer.parseInt(field.getText());
+
+            if (index < 0 || index > 24) {
+                JOptionPane.showMessageDialog(frame, "Please enter between 0-24", "WARNING", JOptionPane.WARNING_MESSAGE);
+            } else {
+                buttons.get(index).setBackground(Color.RED);
+                field.setText("");
+            }
+        };
+
+        button.addActionListener(e -> runnable.run());
+        field.addActionListener(e -> runnable.run());
+
+        clear.addActionListener(e -> {
+            for (JButton b : buttons) {
+                b.setBackground(null);
+            }
+        });
+
+        frame.add(matrix, BorderLayout.CENTER);
+        frame.add(panel, BorderLayout.SOUTH);
+        frame.setVisible(true);
     }
 }
