@@ -1,0 +1,12 @@
+Spargel;INCORRECT
+Salamibrot;INCORRECT
+Döner-Kebap;INCORRECT
+Gemüse;NOT_CLASSIFIED
+Gemüse;CORRECT
+Eis;CORRECT
+Quarktasche;CORRECT
+Wassermelone;CORRECT
+Quarktasche;CORRECT
+Leberkäsweck;CORRECT
+Eis;CORRECT
+Döner-Kebap;CORRECT
